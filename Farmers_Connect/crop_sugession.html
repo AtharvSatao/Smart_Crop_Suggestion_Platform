@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Smart Crop Suggester - Farmers Connect</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <div class="dashboard-container">
+        <div class="crop-suggestion-form">
+            <h2>🌱 Smart Crop Suggester</h2>
+            <p>Enter your farm's soil and weather conditions to get a crop recommendation from our smart model.</p>
+            
+            <div class="form-row">
+                <label>Nitrogen (N) Content in Soil: <input type="number" id="nitrogen" placeholder="e.g., 90"></label>
+                <label>Phosphorus (P) Content in Soil: <input type="number" id="phosphorus" placeholder="e.g., 42"></label>
+                <label>Potassium (K) Content in Soil: <input type="number" id="potassium" placeholder="e.g., 43"></label>
+            </div>
+            <div class="form-row">
+                <label>Temperature (°C): <input type="number" id="temperature" step="0.1" placeholder="e.g., 20.8"></label>
+                <label>Relative Humidity (%): <input type="number" id="humidity" step="0.1" placeholder="e.g., 82.0"></label>
+            </div>
+            <div class="form-row">
+                <label>Soil pH Value: <input type="number" id="ph" step="0.1" placeholder="e.g., 6.5"></label>
+                <label>Rainfall (in mm): <input type="number" id="rainfall" step="0.1" placeholder="e.g., 202.9"></label>
+            </div>
+            <div class="suggestCrop-button" style="text-align: center; margin-top: 20px;">
+            <button onclick="suggestCrop()">Suggest Crop</button>
+            </div>
+            
+            <div id="suggestion-result" class="hidden">
+            <h4>Top 3 Recommended Crops:</h4>
+            <ol id="crop-output-list"></ol> </div>
+            </div>
+            <div class="back-button" style="text-align: center; margin-top: 20px;">
+            <a href="farmer-dashboard.html"><button>Back to Dashboard</button></a>
+        </div>
+        </div>
+    </div>
+
+    
+    <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Cart - Farmers Connect</title>
+  <link rel="stylesheet" href="styles.css" />
+
+  <!-- Checkout Section CSS -->
+  <style>
+    /* === Checkout Popup Overlay === */
+    #checkout-popup {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0,0,0,0.6);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 10000;
+    }
+
+    /* Hide by default */
+    .hidden {
+      display: none !important;
+    }
+
+    /* === Popup Box === */
+    #checkout-popup .popup-content {
+      background-color: #fff;
+      padding: 25px 30px;
+      border-radius: 12px;
+      width: 90%;
+      max-width: 480px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.25);
+      overflow-y: auto;
+      max-height: 90vh;
+      animation: fadeIn 0.3s ease-in-out;
+    }
+
+    /* Heading */
+    #checkout-popup h2 {
+      text-align: center;
+      margin-bottom: 20px;
+      font-size: 1.8rem;
+      font-weight: bold;
+      color: #333;
+    }
+
+    /* === Form Styling === */
+    #checkout-popup label {
+      display: block;
+      margin-bottom: 15px;
+      font-weight: 600;
+      color: #444;
+      font-size: 0.95rem;
+    }
+
+    #checkout-popup input,
+    #checkout-popup select,
+    #checkout-popup textarea {
+      width: 100%;
+      padding: 10px 12px;
+      font-size: 1rem;
+      margin-top: 6px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      outline: none;
+      transition: border-color 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    #checkout-popup input:focus,
+    #checkout-popup select:focus,
+    #checkout-popup textarea:focus {
+      border-color: #28a745;
+      box-shadow: 0 0 4px rgba(40,167,69,0.3);
+    }
+
+    /* Payment Sections */
+    #card-details,
+    #upi-qr {
+      margin-top: 15px;
+    }
+
+    #upi-qr img {
+      width: 200px;
+      max-width: 100%;
+      display: block;
+      margin: 12px auto;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+    }
+
+    /* === Buttons === */
+    #checkout-popup button {
+      width: 100%;
+      padding: 12px;
+      margin-top: 12px;
+      font-size: 1rem;
+      font-weight: bold;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: background-color 0.3s ease, transform 0.1s ease;
+    }
+
+    #checkout-popup button.green {
+      background-color: #28a745;
+      color: #fff;
+    }
+
+    #checkout-popup button.green:hover {
+      background-color: #218838;
+    }
+
+    #checkout-popup button.green:active {
+      transform: scale(0.98);
+    }
+
+    #checkout-popup button.cancel {
+      background-color: #dc3545;
+      color: #fff;
+    }
+
+    #checkout-popup button.cancel:hover {
+      background-color: #c82333;
+    }
+
+    #checkout-popup button.cancel:active {
+      transform: scale(0.98);
+    }
+
+    /* Prevent background scroll when popup is open */
+    body.modal-open {
+      overflow: hidden;
+    }
+
+    /* === Animations === */
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: scale(0.95);
+      }
+      to {
+        opacity: 1;
+        transform: scale(1);
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Header -->
+  <header>
+    <div class="logo">
+      <h1>Farmers Connect</h1>
+    </div>
+    <nav>
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="products.html">Products</a></li>
+        <li><a href="about.html">About Us</a></li>
+        <li><a href="register.html">Register</a></li>
+        <li><a href="cart.html">Cart</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- Cart Section -->
+  <section id="cart">
+    <h2>Your Cart</h2>
+    <div id="cart-items"></div>
+    <button onclick="checkout()">Checkout</button>
+  </section>
+
+  <!-- Checkout Popup -->
+  <div id="checkout-popup" class="hidden">
+    <div class="popup-content">
+      <h2>Checkout</h2>
+
+      <label>Name: <input type="text" id="checkout-name" /></label>
+      <label>Phone: <input type="text" id="checkout-phone" /></label>
+      <label>Address: <input type="text" id="checkout-address" /></label>
+
+      <label>Payment Method:
+        <select id="payment" onchange="showPaymentOptions()">
+          <option value="">Select</option>
+          <option value="card">Card</option>
+          <option value="upi">UPI</option>
+        </select>
+      </label>
+
+      <!-- Card Details -->
+      <div id="card-details" class="hidden">
+        <label>Card Number: <input type="text" id="card-number" /></label>
+        <label>Expiry Date: <input type="text" /></label>
+        <label>CVV: <input type="text" /></label>
+      </div>
+
+      <!-- UPI QR -->
+      <div id="upi-qr" class="hidden">
+        <img src="images/sample-qr-code.jpg" alt="UPI QR Code" />
+      </div>
+
+      <button class="green" onclick="placeOrder()">Place Order</button>
+      <button class="cancel" onclick="hideCheckout()">Cancel</button>
+    </div>
+  </div>
+
+  <!-- Cart Summary (if used) -->
+  <div id="cart-popup" class="hidden"></div>
+
+  <!-- Footer -->
+  <footer class="cr-footer">
+    &copy; 2025 Farmers Connect. All rights reserved.
+  </footer>
+
+  <!-- Scripts -->
+  <script src="script.js"></script>
+  <script>
+    window.onload = updateCart;
+
+    // Force login
+    if (!sessionStorage.getItem("loggedInUser")) {
+      alert("Please login to access the site.");
+      window.location.href = "register.html";
+    }
+  </script>
+
+</body>
+</html>

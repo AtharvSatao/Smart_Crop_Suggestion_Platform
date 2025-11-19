@@ -1,0 +1,98 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Account - Farmers Connect</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <header>
+        <div class="logo">
+            <h1>Farmers Connect</h1>
+        </div>
+        <nav>
+            <ul class="nav-links">
+                <li><a href="register.html">Register</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="register-container">
+        <h2 id="section-title">Login / Register</h2>
+
+        <div id="role-selection" class="form-section">
+            <p><h4>Are you a:</h4></p>
+            <button onclick="selectRole('consumer')">Consumer</button>
+            <button onclick="selectRole('farmer')">Farmer</button>
+        </div>
+
+        <div id="consumer-login-form" class="hidden form-section">
+            <label for="consumer-login-username">Username:</label>
+            <input type="text" id="consumer-login-username" required><br>
+            <label for="consumer-login-password">Password:</label>
+            <input type="password" id="consumer-login-password" required><br>
+            <button onclick="loginConsumer()">Login</button>
+            <p><h4>Don't have a consumer account? </h4></p>
+            <button onclick="showConsumerSignUp()">Sign up</button>
+            <button onclick="backToRoleSelection()">Back to role selection</button>
+        </div>
+    
+        <div id="consumer-signup-form" class="hidden form-section">
+            <label for="consumer-signup-username">Username:</label>
+            <input type="text" id="consumer-signup-username" required><br>
+            <label for="consumer-signup-email">Email:</label>
+            <input type="email" id="consumer-signup-email" required><br>
+            <label for="consumer-signup-password">Password:</label>
+            <input type="password" id="consumer-signup-password" required><br>
+            <button onclick="signUpConsumer()">Sign Up</button>
+            <p><h4>Already have a consumer account?</h4></p>
+            <button onclick="showConsumerLogin()">Login</button>
+            <button onclick="backToRoleSelection()">Back to role selection</button>
+        </div>
+
+        <div id="farmer-login-form" class="hidden form-section">
+            <label for="farmer-login-farmname">Username:</label>
+            <input type="text" id="farmer-login-farmname" required><br>
+            <label for="farmer-login-password">Password:</label>
+            <input type="password" id="farmer-login-password" required><br>
+            <button onclick="loginFarmer()">Login</button>
+            <p><h4>Don't have a farmer account? </h4></p>
+            <button onclick="showFarmerSignUp()">Sign up</button>
+            <button onclick="backToRoleSelection()">Back to role selection</button>
+        </div>
+    
+        <div id="farmer-signup-form" class="hidden form-section">
+            <label for="farmer-signup-farmname">Username:</label>
+            <input type="text" id="farmer-signup-farmname" required><br>
+            <label for="farmer-signup-email">Email:</label>
+            <input type="email" id="farmer-signup-email" required><br>
+            <label for="farmer-signup-password">Password:</label>
+            <input type="password" id="farmer-signup-password" required><br>
+            <button onclick="signUpFarmer()">Sign Up</button>
+            <p><h4>Already have a farmer account? </h4></p>
+            <button onclick="showFarmerLogin()">Login</button>
+            <button onclick="backToRoleSelection()">Back to role selection</button>
+        </div>
+
+        <div id="update-form" class="hidden form-section">
+            <label for="profile-username">Username:</label>
+            <input type="text" id="profile-username" disabled><br>
+            <label for="profile-email">Email:</label>
+            <input type="email" id="profile-email" required><br>
+            <label for="profile-password">New Password (optional):</label>
+            <input type="password" id="profile-password"><br>
+            <button onclick="updateProfile()">Update Profile</button>
+            <button onclick="goHome()">Go to Home</button>
+        </div>
+    </div>
+
+    <footer class="cr-footer">
+        &copy; 2025 Farmers Connect. All rights reserved.
+    </footer>
+    
+    <script src="script.js"></script>
+</body>
+</html>

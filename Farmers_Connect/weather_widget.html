@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather Dashboard</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    
+    <main style="padding: 20px; max-width: 800px; margin: 20px auto; background-color: #fff; border-radius: 8px; box-shadow: 0 0 10px rgba(0,0,0,0.1);">
+        <section>
+            <h2>Current Conditions</h2>
+            
+            <div class="weather-container">
+                <h2>🌤️ Weather</h2>
+                
+                <div class="search">
+                    <input type="text" id="cityInput" placeholder="Enter city name..." />
+                    <button onclick="getWeatherByCity()">Search</button>
+                </div>
+                
+                <div class="location-button">
+                    <button onclick="getWeatherByLocation()">📍 Use My Location</button>
+                </div>
+                
+                <div class="weather-info" id="weatherInfo">
+                    <p>Enter a city or use your location to see weather.</p>
+                </div>
+            </div>
+
+            <div class="back-button" style="text-align: center; margin-top: 20px;" >
+            <a href="farmer-dashboard.html"><button>Back to Dashboard</button>
+            </div>
+            </section>
+    </main>
+    <script src="script.js"></script>
+</body>
+</html>

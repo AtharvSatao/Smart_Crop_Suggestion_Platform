@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Products - Farmers Connect</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+
+<body>
+
+  <header>
+    <div class="logo">
+      <h1>Farmers Connect</h1>
+    </div>
+    <nav>
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="products.html">Products</a></li>
+        <li><a href="about.html">About Us</a></li>
+        <li><a href="register.html">Register</a></li>
+        <li><a href="cart.html">Cart</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <section id="products">
+    <div class="category-filter">
+      <label for="category-select"><strong id="products-label">Our Products</strong></label><br>
+      <select id="category-select" onchange="sortByCategory()">
+        <option value="all">All Categories</option>
+        <option value="vegetables">Vegetables</option>
+        <option value="fruits">Fruits</option>
+      </select>
+    </div>
+
+    <div class="product-grid">
+      <!-- Fruits -->
+      <div class="product-card" data-category="fruits">
+        <img src="images/products/Apple.webp" alt="Apple">
+        <h4>Apple</h4>
+        <p>Price: ₹160 per 1Kg</p>
+        <button onclick="addToCart('Apple', 160)">Add to Cart</button>
+      </div>
+
+      <div class="product-card" data-category="fruits">
+        <img src="images/products/Banana.webp" alt="Banana">
+        <h4>Banana</h4>
+        <p>Price: ₹70 per Dozen</p>
+        <button onclick="addToCart('Banana', 70)">Add to Cart</button>
+      </div>
+
+      <div class="product-card" data-category="fruits">
+        <img src="images/products/Mango.webp" alt="Mango">
+        <h4>Mango</h4>
+        <p>Price: ₹100 per kg</p>
+        <button onclick="addToCart('Mango', 100)">Add to Cart</button>
+      </div>
+
+      <div class="product-card" data-category="fruits">
+        <img src="images/products/Pineapple.webp" alt="Pineapple">
+        <h4>Pineapple</h4>
+        <p>Price: ₹200 per piece</p>
+        <button onclick="addToCart('Pineapple', 200)">Add to Cart</button>
+      </div>
+
+      <div class="product-card" data-category="fruits">
+        <img src="images/products/Watermelons.webp" alt="Watermelon">
+        <h4>Watermelon</h4>
+        <p>Price: ₹50</p>
+        <button onclick="addToCart('Watermelon', 50)">Add to Cart</button>
+      </div>
+
+      <div class="product-card" data-category="fruits">
+        <img src="images/products/Papaya.webp" alt="Papaya">
+        <h4>Papaya</h4>
+        <p>Price: ₹45</p>
+        <button onclick="addToCart('Papaya', 45)">Add to Cart</button>
+      </div>
+
+      <div class="product-card" data-category="fruits">
+        <img src="images/products/Orange.webp" alt="Orange">
+        <h4>Orange</h4>
+        <p>Price: ₹30</p>
+        <button onclick="addToCart('Orange', 30)">Add to Cart</button>
+      </div>
+
+      <div class="product-card" data-category="fruits">
+        <img src="images/products/Grapes.webp" alt="Grapes">
+        <h4>Grapes</h4>
+        <p>Price: ₹70</p>
+        <button onclick="addToCart('Grapes', 70)">Add to Cart</button>
+      </div>
+
+      <div class="product-card" data-category="fruits">
+        <img src="images/products/Strawberry.webp" alt="Strawberry">
+        <h4>Strawberry</h4>
+        <p>Price: ₹90</p>
+        <button onclick="addToCart('Strawberry', 90)">Add to Cart</button>
+      </div>
+
+      <!-- Vegetables -->
+      <div class="product-card" data-category="vegetables">
+        <img src="images/products/Tomato.webp" alt="Tomato">
+        <h4>Tomato</h4>
+        <p>Price: ₹40</p>
+        <button onclick="addToCart('Tomato', 40)">Add to Cart</button>
+      </div>
+
+      <div class="product-card" data-category="vegetables">
+        <img src="images/products/Potatoes.webp" alt="Potato">
+        <h4>Potato</h4>
+        <p>Price: ₹40</p>
+        <button onclick="addToCart('Potato', 40)">Add to Cart</button>
+      </div>
+
+      <div class="product-card" data-category="vegetables">
+        <img src="images/products/Cabbage.webp" alt="Cabbage">
+        <h4>Cabbage</h4>
+        <p>Price: ₹20 per piece</p>
+        <button onclick="addToCart('Cabbage', 20)">Add to Cart</button>
+      </div>
+
+      <div class="product-card" data-category="vegetables">
+        <img src="images/products/Carrot.webp" alt="Carrot">
+        <h4>Carrot</h4>
+        <p>Price: ₹40</p>
+        <button onclick="addToCart('Carrot', 40)">Add to Cart</button>
+      </div>
+
+      <div class="product-card" data-category="vegetables">
+        <img src="images/products/Broccoli.webp" alt="Broccoli">
+        <h4>Broccoli</h4>
+        <p>Price: ₹50</p>
+        <button onclick="addToCart('Broccoli', 50)">Add to Cart</button>
+      </div>
+
+      <div class="product-card" data-category="vegetables">
+        <img src="images/products/Spinach.webp" alt="Spinach">
+        <h4>Spinach</h4>
+        <p>Price: ₹30/bundle</p>
+        <button onclick="addToCart('Spinach', 30)">Add to Cart</button>
+      </div>
+
+      <div class="product-card" data-category="vegetables">
+        <img src="images/products/Cauliflower.webp" alt="Cauliflower">
+        <h4>Cauliflower</h4>
+        <p>Price: ₹40 each</p>
+        <button onclick="addToCart('Cauliflower', 40)">Add to Cart</button>
+      </div>
+
+      <div class="product-card" data-category="vegetables">
+        <img src="images/products/Capsicum.webp" alt="Capsicum">
+        <h4>Capsicum</h4>
+        <p>Price: ₹50 / 500g</p>
+        <button onclick="addToCart('Capsicum', 50)">Add to Cart</button>
+      </div>
+
+      <div class="product-card" data-category="vegetables">
+        <img src="images/products/Eggplant.webp" alt="Eggplant">
+        <h4>Eggplant</h4>
+        <p>Price: ₹40 / 500g</p>
+        <button onclick="addToCart('Eggplant', 40)">Add to Cart</button>
+      </div>
+    </div>
+  </section>
+
+  <footer class="main-footer">
+    &copy; 2025 Farmers Connect. All rights reserved.
+  </footer>
+
+  <script src="script.js"></script>
+  <script>
+  if (!sessionStorage.getItem("loggedInUser")) {
+    alert("Please login to access the site.");
+    window.location.href = "register.html";
+  }
+</script>
+
+</body>
+</html>
